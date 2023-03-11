@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Mentor extends Model
+class Category extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory,SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -17,8 +17,6 @@ class Mentor extends Model
      */
 
     protected $fillable = [
-        'user_id',
-        'uuid',
         'name',
         'slug',
         'description',
@@ -26,12 +24,10 @@ class Mentor extends Model
         'status',
         'created_by',
         'updated_by',
-        'profession',
-        'email',
     ];
 
-    public function user()
+    public function course()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(Course::class);
     }
 }

@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('mentors', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            //slug
             $table->string('slug')->unique();
+            $table->string('uuid')->unique();
             $table->longText('description')->nullable();
             $table->string('image')->nullable();
             $table->string('status')->default('active');
             $table->string('profession')->nullable();
-            $table->string('email')->nullable();
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
             $table->timestamps();

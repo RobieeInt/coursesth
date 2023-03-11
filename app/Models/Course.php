@@ -18,6 +18,7 @@ class Course extends Model
 
     protected $fillable = [
         'mentor_id',
+        'category_id',
         'name',
         'slug',
         'description',
@@ -37,6 +38,11 @@ class Course extends Model
     public function chapters()
     {
         return $this->hasMany(Chapter::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 
 }

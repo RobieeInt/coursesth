@@ -11,17 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('lessons', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('chapter_id')->constrained('chapters')->onDelete('cascade');
             $table->string('name');
             $table->string('slug')->unique();
+            $table->string('image')->nullable();
             $table->longText('description')->nullable();
-            $table->string('video')->nullable();
-            $table->string('duration')->nullable();
-            $table->enum('type', ['video', 'document'])->default('video');
-            $table->enum('status', ['lock', 'unlock'])->default('lock');
-
+            $table->string('icon')->nullable();
+            $table->string('status')->default('active');
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
             $table->timestamps();
@@ -34,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('lessons');
+        Schema::dropIfExists('categories');
     }
 };

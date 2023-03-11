@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('course_id')->constrained('courses')->onDelete('cascade');
             $table->string('name');
-            $table->string('slug')->unique();
+            $table->string('slug');
             $table->longText('description')->nullable();
+            $table->enum('status', ['draft', 'publish'])->default('draft');
 
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
