@@ -28,5 +28,10 @@ class Chapters extends Model
         return $this->belongsTo(Course::class);
     }
 
+    //hasmany lesson foreignkey chapters_id
+    public function lessons()
+    {
+        return $this->hasMany(Lessons::class);
+    }
 
 }

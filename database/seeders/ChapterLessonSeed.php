@@ -145,7 +145,7 @@ class ChapterLessonSeed extends Seeder
 
         $lessons = [
             [
-                'chapter_id' => 1,
+                'chapters_id' => 1,
                 'name' => 'Lesson 1',
                 'slug' => 'lesson-1',
                 'description' => 'Lesson 1',
@@ -154,7 +154,7 @@ class ChapterLessonSeed extends Seeder
                 'updated_by' => 'admin',
             ],
             [
-                'chapter_id' => 1,
+                'chapters_id' => 1,
                 'name' => 'Lesson 2',
                 'slug' => 'lesson-2',
                 'description' => 'Lesson 2',
@@ -163,7 +163,7 @@ class ChapterLessonSeed extends Seeder
                 'updated_by' => 'admin',
             ],
             [
-                'chapter_id' => 1,
+                'chapters_id' => 1,
                 'name' => 'Lesson 3',
                 'slug' => 'lesson-3',
                 'description' => 'Lesson 3',
@@ -172,7 +172,7 @@ class ChapterLessonSeed extends Seeder
                 'updated_by' => 'admin',
             ],
             [
-                'chapter_id' => 1,
+                'chapters_id' => 1,
                 'name' => 'Lesson 4',
                 'slug' => 'lesson-4',
                 'description' => 'Lesson 4',
@@ -181,7 +181,7 @@ class ChapterLessonSeed extends Seeder
                 'updated_by' => 'admin',
             ],
             [
-                'chapter_id' => 1,
+                'chapters_id' => 1,
                 'name' => 'Lesson 5',
                 'slug' => 'lesson-5',
                 'description' => 'Lesson 5',
@@ -190,7 +190,7 @@ class ChapterLessonSeed extends Seeder
                 'updated_by' => 'admin',
             ],
             [
-                'chapter_id' => 1,
+                'chapters_id' => 1,
                 'name' => 'Lesson 6',
                 'slug' => 'lesson-6',
                 'description' => 'Lesson 6',

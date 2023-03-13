@@ -17,7 +17,7 @@ class Lessons extends Model
      */
 
     protected $fillable = [
-        'chapter_id',
+        'chapters_id',
         'name',
         'slug',
         'description',
@@ -27,7 +27,8 @@ class Lessons extends Model
         'status',
     ];
 
-    public function chapter()
+    //foreign key chapters_id
+    public function chapters()
     {
         return $this->belongsTo(Chapters::class);
     }
