@@ -1286,7 +1286,8 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <form action="#">
-                                <input type="text" placeholder="What are you looking for?">
+                                <input type="text" wire:model="searchInput"
+                                    placeholder="What are you looking for?">
                                 <div class="submit-btn">
                                     <a class="rbt-btn btn-gradient btn-md" href="#">Search</a>
                                 </div>
@@ -1305,137 +1306,56 @@
                             </div>
                         </div>
 
-                        <!-- Start Single Card  -->
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                            <div class="rbt-card variation-01 rbt-hover">
-                                <div class="rbt-card-img">
-                                    <a href="course-details.html">
-                                        <img src="{{ asset('course/assets/images/course/course-online-01.jpg') }}"
-                                            alt="Card image">
-                                    </a>
-                                </div>
-                                <div class="rbt-card-body">
-                                    <h5 class="rbt-card-title"><a href="course-details.html">React Js</a>
-                                    </h5>
-                                    <div class="rbt-review">
-                                        <div class="rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <span class="rating-count"> (15 Reviews)</span>
+                        @forelse ($courses as $course)
+                            <!-- Start Single Card  -->
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                                <div class="rbt-card variation-01 rbt-hover">
+                                    <div class="rbt-card-img">
+                                        <a href="course-details.html">
+                                            <img src="{{ asset('course/assets/images/banner/content2.jpg') }}"
+                                                alt="Card image">
+                                        </a>
                                     </div>
-                                    <div class="rbt-card-bottom">
-                                        <div class="rbt-price">
-                                            <span class="current-price">$15</span>
-                                            <span class="off-price">$25</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Card  -->
+                                    <div class="rbt-card-body">
+                                        <h5 class="rbt-card-title"><a
+                                                href="course-details.html">{{ $course->name }}</a>
+                                        </h5>
+                                        <div class="rbt-review">
+                                            <div class="rating">
+                                                @php
+                                                    $rating = $course->reviews()->avg('rating');
+                                                    $maxRating = 5;
+                                                    $limitedRating = min($rating, $maxRating);
+                                                @endphp
 
-                        <!-- Start Single Card  -->
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                            <div class="rbt-card variation-01 rbt-hover">
-                                <div class="rbt-card-img">
-                                    <a href="course-details.html">
-                                        <img src="{{ asset('course/assets/images/course/course-online-02.jpg') }}"
-                                            alt="Card image">
-                                    </a>
-                                </div>
-                                <div class="rbt-card-body">
-                                    <h5 class="rbt-card-title"><a href="course-details.html">Java Program</a>
-                                    </h5>
-                                    <div class="rbt-review">
-                                        <div class="rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <span class="rating-count"> (15 Reviews)</span>
-                                    </div>
-                                    <div class="rbt-card-bottom">
-                                        <div class="rbt-price">
-                                            <span class="current-price">$10</span>
-                                            <span class="off-price">$40</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Card  -->
+                                                @for ($i = 0; $i < floor($limitedRating); $i++)
+                                                    <i class="fas fa-star"></i>
+                                                @endfor
 
-                        <!-- Start Single Card  -->
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                            <div class="rbt-card variation-01 rbt-hover">
-                                <div class="rbt-card-img">
-                                    <a href="course-details.html">
-                                        <img src="{{ asset('course/assets/images/course/course-online-03.jpg') }}"
-                                            alt="Card image">
-                                    </a>
-                                </div>
-                                <div class="rbt-card-body">
-                                    <h5 class="rbt-card-title"><a href="course-details.html">Web Design</a>
-                                    </h5>
-                                    <div class="rbt-review">
-                                        <div class="rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <span class="rating-count"> (15 Reviews)</span>
-                                    </div>
-                                    <div class="rbt-card-bottom">
-                                        <div class="rbt-price">
-                                            <span class="current-price">$10</span>
-                                            <span class="off-price">$20</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Card  -->
+                                                @if ($limitedRating - floor($limitedRating) >= 0.1)
+                                                    <i class="fas fa-star-half-alt"></i>
+                                                @endif
+                                            </div>
 
-                        <!-- Start Single Card  -->
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                            <div class="rbt-card variation-01 rbt-hover">
-                                <div class="rbt-card-img">
-                                    <a href="course-details.html">
-                                        <img src="{{ asset('course/assets/images/course/course-online-04.jpg') }}"
-                                            alt="Card image">
-                                    </a>
-                                </div>
-                                <div class="rbt-card-body">
-                                    <h5 class="rbt-card-title"><a href="course-details.html">Web Design</a>
-                                    </h5>
-                                    <div class="rbt-review">
-                                        <div class="rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
+                                            <span class="rating-count">
+                                                {{-- number format {{ $course->reviews()->avg('rating') }} --}}
+                                                {{ number_format($course->reviews()->avg('rating'), 1) }}
+                                                ({{ $course->reviews()->count() }}
+                                                Reviews)
+                                            </span>
                                         </div>
-                                        <span class="rating-count"> (15 Reviews)</span>
-                                    </div>
-                                    <div class="rbt-card-bottom">
-                                        <div class="rbt-price">
-                                            <span class="current-price">$20</span>
-                                            <span class="off-price">$40</span>
+                                        <div class="rbt-card-bottom">
+                                            <div class="rbt-price">
+                                                <span class="current-price">$15</span>
+                                                <span class="off-price">$25</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- End Single Card  -->
+                            <!-- End Single Card  -->
+                        @empty
+                        @endforelse
                     </div>
 
                 </div>
@@ -1731,8 +1651,7 @@
                                                             alt="Demo Images"></a>
                                                 </div>
                                                 <div class="content">
-                                                    <h4 class="title"><a
-                                                            href="06-university-status.html">University
+                                                    <h4 class="title"><a href="06-university-status.html">University
                                                             Status <span class="btn-icon"><i
                                                                     class="feather-arrow-right"></i></span></a></h4>
                                                 </div>

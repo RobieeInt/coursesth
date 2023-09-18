@@ -34,14 +34,26 @@
                                 <div class="rbt-card-top">
                                     <div class="rbt-review">
                                         <div class="rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
+                                            @php
+                                                $rating = $course->reviews()->avg('rating');
+                                                $maxRating = 5;
+                                                $limitedRating = min($rating, $maxRating);
+                                            @endphp
+
+                                            @for ($i = 0; $i < floor($limitedRating); $i++)
+                                                <i class="fas fa-star"></i>
+                                            @endfor
+
+                                            @if ($limitedRating - floor($limitedRating) >= 0.1)
+                                                <i class="fas fa-star-half-alt"></i>
+                                            @endif
                                         </div>
-                                        <span class="rating-count"> (15 Reviews)</span>
+                                        <span class="rating-count">
+                                            {{ number_format($course->reviews()->avg('rating'), 1) }}
+                                            ({{ $course->reviews()->count() }} Reviews)
+                                        </span>
                                     </div>
+
                                     <div class="rbt-bookmark-btn">
                                         <a class="rbt-round-btn" title="Bookmark" href="#"><i
                                                 class="feather-bookmark"></i></a>

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Mentor;
+use App\Models\Reviews;
 use App\Models\Category;
 use App\Models\Chapters;
 use Illuminate\Database\Eloquent\Model;
@@ -46,6 +47,12 @@ class Course extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    //review
+    public function reviews()
+    {
+        return $this->hasMany(Reviews::class);
     }
 
 }
